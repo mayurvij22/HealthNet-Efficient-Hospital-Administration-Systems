@@ -108,6 +108,11 @@ The Hospital Management System is a web application designed to streamline hospi
 ## Available Scripts
 ![image](https://github.com/user-attachments/assets/dab333ae-8be7-4cd0-ab6b-3a314645a8bf)
 
+![image](https://github.com/user-attachments/assets/ad1b55e2-dc80-40b4-a8d0-4003e68d86db)
+![image](https://github.com/user-attachments/assets/6c4ba626-a90f-4ece-aa46-91a557776246)
+
+![image](https://github.com/user-attachments/assets/2dd076cd-573a-430d-9754-97c5f68c7a07)
+
 
 In the frontend directory, you can run:
 
