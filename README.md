@@ -106,6 +106,8 @@ The Hospital Management System is a web application designed to streamline hospi
 3. Open your browser and navigate to `http://localhost:3000` to view the application.
 
 ## Available Scripts
+![image](https://github.com/user-attachments/assets/dab333ae-8be7-4cd0-ab6b-3a314645a8bf)
+
 
 In the frontend directory, you can run:
 
@@ -113,6 +115,8 @@ In the frontend directory, you can run:
 - `npm test`: Launches the test runner.
 - `npm run build`: Builds the app for production.
 - `npm run eject`: Ejects the configuration files.
+
+
 
 ## Contributing
 
