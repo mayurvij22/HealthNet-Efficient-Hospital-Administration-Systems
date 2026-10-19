@@ -1,128 +1,95 @@
-# Hospital Management System
+<div align="center">
 
-[![MongoDB](https://img.shields.io/badge/MongoDB-Database-green.svg)](https://www.mongodb.com/)
-[![Express](https://img.shields.io/badge/Express-Framework-blue.svg)](https://expressjs.com/)
-[![React](https://img.shields.io/badge/React-Library-61DAFB.svg)](https://reactjs.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-Environment-339933.svg)](https://nodejs.org/)
+# 🏥 HealthNet: Hospital Administration System
 
-## Overview
+**A role-based hospital management platform for patients, doctors and admins: appointments, prescriptions and dashboards in one place.**
 
-The Hospital Management System is a web application designed to streamline hospital operations, manage patient records, and enhance the overall efficiency of healthcare services. This application is built using React for the frontend and Node.js with Express for the backend, along with MongoDB for data storage.
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=white)
 
-## Features
+### [🌐 Live demo](https://health-net-efficient-hospital-administration-systems.vercel.app)
 
-- User authentication for patients, doctors, and admins
-- Patient management including records and appointments
-- Doctor management with profiles and schedules
-- Admin dashboard for overseeing hospital operations
-- Responsive design for mobile and desktop users
+</div>
 
-## Technologies Used
+---
 
-- **Frontend:**
-  - React
-  - React Router
-  - Tailwind CSS
-  - Lucide Icons
-  - Axios for API calls
+## ✨ Features by role
 
-- **Backend:**
-  - Node.js
-  - Express
-  - MongoDB
-  - Mongoose
-  - JWT for authentication
-  - dotenv for environment variable management
+| 🧑 Patient | 🩺 Doctor | 🛡️ Admin |
+|---|---|---|
+| Sign up and manage profile | Manage profile | Add doctors and admins |
+| See available slots | See own appointments | Total doctor and patient counts |
+| **Book appointments** | **Schedule appointments** | Doctor overview |
+| View appointments | View patients with appointments | Patient overview |
+| View care team | **Prescribe medication** | Manage own profile |
+| View prescriptions | Edit or delete prescriptions | |
 
-## Getting Started
+- **JWT authentication** with role-based dashboards (`/patient`, `/doctor`, `/admin`)
+- Passwords hashed with **bcrypt**
+- Appointment status tracking: `scheduled` → `completed` / `cancelled`
+- `createAdmin.js` script to bootstrap the first admin
 
-### Prerequisites
+## 🏗️ Architecture
 
-- Node.js (v14 or higher)
-- MongoDB (local or cloud instance)
+```mermaid
+flowchart LR
+    FE[React + Tailwind<br/>role-based dashboards] -- JWT --> API[Express API]
+    API --> DB[(MongoDB<br/>Users · Doctors · Admins<br/>Appointments · Prescriptions)]
+```
 
-### Installation
+## 📡 API overview
 
-1. Clone the repository:
+| Base path | Highlights |
+|---|---|
+| `/api/signup`, `/api/login` | Register (patients) and log in (all roles) |
+| `/api/patient` | `profile`, `available-slots`, `book-appointment`, `appointments`, `care-team`, `prescriptions` |
+| `/api/doctor` | `profile`, `appointments`, `patients-with-appointments`, `schedule-appointment`, `prescribe-medication`, `prescriptions/:id` |
+| `/api/admin` | `add-doctor`, `add-admin`, `total-doctors`, `total-patients`, `doctor-overview`, `patient-overview` |
 
-   ```bash
-   git clone https://github.com/MKPTechnicals/Hospital-Management-System-MERN.git
-   ```
+## 🚀 Run locally
 
-2. Navigate to the frontend directory and install dependencies:
+```bash
+git clone https://github.com/mayurvij22/HealthNet-Efficient-Hospital-Administration-Systems.git
+cd HealthNet-Efficient-Hospital-Administration-Systems/backend
+npm install
+```
 
-   ```bash
-   cd frontend
-   npm install
-   ```
+1. In `backend/server.js`, replace `<your_MongoDB_connection_string>` with your MongoDB URI.
+2. Create the first admin and start the API:
 
-3. Navigate to the backend directory and install dependencies:
+```bash
+node createAdmin.js
+node server.js             # http://localhost:5000
+```
 
-   ```bash
-   cd backend
-   npm install
-   ```
+3. Start the frontend:
 
-4. Update a `/backend/server.js` & `/backend/createAdmin.js` file in the backend directory and add your MongoDB connection string:
+```bash
+cd ../frontend
+npm install
+npm start                  # http://localhost:3000
+```
 
-   ```js
-   // MongoDB connection
-   mongoose.connect('<your_MongoDB_connection_string>', {
-   ```
-5. To create first admin, add your details to `/backend/createAdmin.js` file in backend directory:
+> [!TIP]
+> For production, move the MongoDB URI and the JWT signing secret into environment variables (`.env`) instead of
+> keeping them in source files.
 
-    ```js
-    const admin = new Admin({
-      firstName: "abc",
-      lastName: "xyz",
-      email: "abc@gmail.com",
-      password: "xyz123", 
-      role: "admin"
-    });
-    ```
+## 🛠️ Tech stack
 
-    Then, execute it once using:
-  
-    ```bash
-    node createAdmin.js
-    ```
+| Layer | Technology |
+|---|---|
+| Frontend | React (CRA), React Router, Tailwind CSS, lucide-react |
+| Backend | Node.js, Express, Mongoose, JWT, bcrypt |
+| Database | MongoDB |
+| Hosting | Vercel |
 
-### Running the Application
+---
 
-1. Start the backend server:
+<div align="center">
 
-   ```bash
-   cd backend
-   node server.js
-   ```
+Made by **[Mayur Patil](https://github.com/mayurvij22)**
 
-2. Start the frontend application:
-
-   ```bash
-   cd frontend
-   npm start
-   ```
-
-3. Open your browser and navigate to `http://localhost:3000` to view the application.
-
-## Available Scripts
-![image](https://github.com/user-attachments/assets/dab333ae-8be7-4cd0-ab6b-3a314645a8bf)
-
-![image](https://github.com/user-attachments/assets/ad1b55e2-dc80-40b4-a8d0-4003e68d86db)
-![image](https://github.com/user-attachments/assets/6c4ba626-a90f-4ece-aa46-91a557776246)
-
-![image](https://github.com/user-attachments/assets/2dd076cd-573a-430d-9754-97c5f68c7a07)
-
-
-In the frontend directory, you can run:
-
-- `npm start`: Runs the app in development mode.
-- `npm test`: Launches the test runner.
-- `npm run build`: Builds the app for production.
-- `npm run eject`: Ejects the configuration files.
-
-
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+</div>
